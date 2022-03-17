@@ -19,16 +19,6 @@ const Holidays = () => {
       setBtnTitle('TRY AGAIN!')
     }
 
-    // await fetch({
-    //   method: "POST",
-    //   url: "http://localhost:8080/holidays/",
-    //   data: {
-    //     date: 'test' 
-    //   },
-    //   withCredentials: false
-    // }).then((response) => {
-    //   console.log(response)
-    // })
 
     const randomInt = randomIntNumber(1, 150)
     const randomCountry = countryList.getData()[randomInt].name;
@@ -46,7 +36,7 @@ const Holidays = () => {
     }
 
     axios.request(options).then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         // setWords(response.data)
 
     }).catch((error) => {
@@ -55,7 +45,7 @@ const Holidays = () => {
   }
 
   useEffect(() => {
-    getRandomWords();
+    getRandomWords()
   }, [generateRandomCountry]);
 
   //POST request with body equal on data in JSON format
