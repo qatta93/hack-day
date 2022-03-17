@@ -12,15 +12,15 @@ const Holidays = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [weather, setWeather] = useState({});
-  const [btnTitle, setBtnTitle] = useState('TAKE ME THERE!');
+  const [btnTitle, setBtnTitle] = useState('TAKE ME THERE !');
 
   const randomIntNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   const generateRandomCountry = (e) => {
     e.preventDefault()
-    if (btnTitle === 'TAKE ME THERE!') {
-      setBtnTitle('TRY AGAIN!')
+    if (btnTitle === 'TAKE ME THERE !') {
+      setBtnTitle('TRY AGAIN !')
     }
     const randomInt = randomIntNumber(1, 150)
     const randomCountry = countryList.getData()[randomInt].name;
@@ -77,6 +77,8 @@ const Holidays = () => {
     .catch((error) => {console.error(error)})
   }
 
+
+
   useEffect(() => {
     getCountryData()
     getGallery()
@@ -86,12 +88,12 @@ const Holidays = () => {
   return (
     <main className='holidays'>
       <header className='header'>
-        <h1 className='header__title'>Are you ready?</h1>
-        <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
-        {country !== '' ? <h2 className='header__destination'>Your holidays destination is..</h2> : null}
+        {country === '' ? <h1 className='header__title'>Are you ready?</h1> : null}
+        {country !== '' ? <h2 className='header__destination'>Your holidays destination is:</h2> : null}
         {country !== '' ? <p className='header__country'>{country}</p> : null}
+        {country !== '' ? <Weather weather={weather}/> : null}
+        <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
       </header>
-      {country !== '' ? <Weather weather={weather}/> : null}
       <Gallery gallery={gallery}/>
     </main>
   )

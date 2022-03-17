@@ -1,0 +1,57 @@
+.weather {
+  padding: 1rem;
+  font-weight: 400;
+}
+
+.weather span {
+  margin-left: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(18, 58, 145);
+}
+
+.weather__title {
+  font-weight: 500;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 700px) {
+  .weather {
+    padding: 2rem;
+    font-weight: 400;
+  }
+  
+  .weather span {
+    margin-left: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .weather p {
+    font-size: 1.5rem;
+  }
+  
+  .weather__title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .weather {
+    padding: 3rem;
+  }
+  
+  .weather span {
+    margin-left: 0.8rem;
+    font-size: 3rem;
+  }
+
+  .weather p {
+    font-size: 2.5rem;
+  }
+  
+  .weather__title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}

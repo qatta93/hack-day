@@ -4,7 +4,7 @@ import './Gallery.css';
 const Gallery = (gallery) => {
   return (
       <section  className='gallery'>
-        <card className='gallery__img' style={{ backgroundImage: `url(${gallery.gallery})`}}></card>
+        <div className='gallery__img' style={{ backgroundImage: `url(${gallery.gallery})`}}></div>
       </section>
   )
 }

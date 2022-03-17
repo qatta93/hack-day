@@ -3,11 +3,94 @@ main {
 }
 
 .header {
-  padding-bottom: 5rem;
+  padding: 2rem;
+  padding-bottom: 0.5rem;
   text-align: center;
+  background-color: rgba(240, 248, 255, 0.781);
 }
 
-.weather {
-  padding: 3rem 0;
-  text-align: center;
+.header__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.header__button {
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background-color: rgb(36, 183, 219);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.header__button:hover {
+  color: rgb(36, 183, 219);
+  background-color: white;
+}
+
+.header__destination {
+  font-weight: 500;
+}
+
+.header__country {
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: rgb(5, 175, 27);
+  font-family: 'Ultra', serif;
+}
+
+@media screen and (min-width: 700px) {
+  .header {
+    padding: 3.5rem;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.199) 0%, rgba(252, 252, 252, 0.8) 27%, rgba(252, 252, 252, 0.8) 80%, rgba(255, 255, 255, 0.178) 100%);
+    ;
+  }
+  
+  .header__title {
+    margin-bottom: 2rem;
+  }
+  
+  .header__button {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem; 
+  }
+  
+  .header__destination {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  
+  .header__country {
+    padding: 1rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .header {
+    padding: 5rem;
+  }
+  
+  .header__title {
+    margin-bottom: 4rem;
+  }
+  
+  .header__button {
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 2.5rem; 
+  }
+  
+  .header__destination {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+  
+  .header__country {
+    padding: 1rem;
+    font-size: 4.5rem;
+  }
 }
