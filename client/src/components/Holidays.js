@@ -27,7 +27,6 @@ const Holidays = () => {
     setCountry(randomCountry);
   }
 
-  // pass the name of country to swapiAPI
   const getGallery = () => {
     const options = {
         method: 'GET',
@@ -41,8 +40,6 @@ const Holidays = () => {
     })
     .catch((error) => {console.error(error)})
   }
-
-// pass the name of country to params of geolocation
 
   const getCountryData = () => {
     const options = {
@@ -84,7 +81,7 @@ const Holidays = () => {
     getCountryData()
     getGallery()
     getCountryWeather()
-  }, [generateRandomCountry]);
+  },[country]);
 
   return (
     <main className='holidays'>

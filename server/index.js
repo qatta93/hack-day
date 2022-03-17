@@ -19,6 +19,7 @@ app.get('/holidays', (req, res) => {
   axios.request(getCountryData)
   .then((response) => {
   const countryData = response.data[0]
+  console.log(countryData)
   res.json(countryData)
   })
   .catch((error) => console.error(error));
@@ -27,6 +28,8 @@ app.get('/holidays', (req, res) => {
 app.get('/holidays/weather', (req, res) => {
   const latitude = req.query.lat;
   const longitude = req.query.lon;
+  console.log(latitude)
+  console.log(longitude)
   const getCountryWeather = {
     method: 'GET',
     url: `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.GEO_KEY}`,
