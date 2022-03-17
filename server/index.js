@@ -50,7 +50,9 @@ app.get('/holidays/gallery', (req, res) => {
   }
   axios.request(getCountryData)
   .then((response) => {
-  const pictureUrl = response.data.results[0].urls.regular
+    const pictureUrl = response.data.results[0].urls.regular
+  // const pictureUrl = response.data.results[0].urls.regular
+  // const data = json.results.map((obj: any) => obj.urls.small);
   console.log('tutaj gallery response', response.data.results[0].urls.regular)
   res.json(pictureUrl);
   })
