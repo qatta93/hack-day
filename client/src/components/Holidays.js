@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Gallery from './Gallery/index'
 import Weather from './Weather/index'
 import './Holidays.css';
+import heart from '../img/heart.png'
 const countryList = require('country-list');
 
 const Holidays = () => {
@@ -89,12 +90,17 @@ const Holidays = () => {
     <main className='holidays'>
       <header className='header'>
         {country === '' ? <h1 className='header__title'>Are you ready?</h1> : null}
-        {country !== '' ? <h2 className='header__destination'>Your holidays destination is:</h2> : null}
-        {country !== '' ? <p className='header__country'>{country}</p> : null}
-        {country !== '' ? <Weather weather={weather}/> : null}
+        {country !== '' ? 
+          <>
+          <img className='header__heart' src={heart} alt='heart' title='add me to FAV!'/>
+          <h2 className='header__destination'>Your holidays destination is:</h2>
+          <p className='header__country'>{country}</p>
+          <Weather weather={weather}/>
+          </>
+        : null}
         <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
       </header>
-      <Gallery gallery={gallery}/>
+      <Gallery gallery={gallery} country={country} setGallery={setGallery}/>
     </main>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './Weather.css';
 
 const Weather = ({ weather }) => {
+  
   return (
     <section className='weather'>
       <h2 className='weather__title'>Current Weather:</h2>
