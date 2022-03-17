@@ -26,32 +26,40 @@ const Holidays = () => {
   }
 
   // pass the name of country to swapiAPI
+  // const getGallery = () => {
+  //   console.log('getGallery fetch called!')
+  //   const options = {
+  //       method: 'GET',
+  //       url: 'http://localhost:8080/holidays/gallery',
+  //       params: {country: country},
+  //   }
+  //   axios.request(options)
+  //   .then((response) => {console.log(response.data)})
+  //   .catch((error) => {console.error(error)})
+  // }
 
-  const getRandomWords = () => {
-    console.log('fetch called!')
+
+// pass the name of country to params of geolocation
+
+  const getCountryData = () => {
+    console.log('getCountryData fetch called!')
     const options = {
         method: 'GET',
         url: 'http://localhost:8080/holidays',
         params: {country: country},
     }
-
-    axios.request(options).then((response) => {
-        // console.log(response.data)
-        // setWords(response.data)
-
-    }).catch((error) => {
-        console.error(error)
-    })
+    axios.request(options)
+    .then((response) => {console.log(response.data)})
+    .catch((error) => {console.error(error)})
   }
 
   useEffect(() => {
-    getRandomWords()
+    getCountryData()
+    // getGallery()
   }, [generateRandomCountry]);
 
-  //POST request with body equal on data in JSON format
 
 
-  // pass the name of country to params of geolocation
 
   // read lat and lon and pass it to weather app
 

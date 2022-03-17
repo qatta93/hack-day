@@ -4,13 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
 import Holidays from './components/index'
+import Weather from './components/Weather/index'
+import Gallery from './components/Gallery/index';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="holidays" element={<Holidays />} />
+      <Route path="holidays" element={<Holidays />}>
+        <Route path="/holidays/weather" element={<Weather />} />
+        <Route path="/holidays/gallery" element={<Gallery/>} />
+      </Route>
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
