@@ -88,10 +88,10 @@ const Holidays = () => {
       <header className='header'>
         <h1 className='header__title'>Are you ready?</h1>
         <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
-        <h2 className='header__destination'>Your holidays destination is..</h2>
-        <p className='header__country'>{country}</p>
+        {country !== '' ? <h2 className='header__destination'>Your holidays destination is..</h2> : null}
+        {country !== '' ? <p className='header__country'>{country}</p> : null}
       </header>
-      <Weather weather={weather}/>
+      {country !== '' ? <Weather weather={weather}/> : null}
       <Gallery gallery={gallery}/>
     </main>
   )

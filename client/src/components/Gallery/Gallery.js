@@ -1,9 +1,10 @@
 import React from 'react';
+import './Gallery.css';
 
 const Gallery = (gallery) => {
   return (
-      <section className='gallery'>
-        <img className='gallery__img' src={gallery.gallery} alt="pic" />
+      <section  className='gallery'>
+        <card className='gallery__img' style={{ backgroundImage: `url(${gallery.gallery})`}}></card>
       </section>
   )
 }
