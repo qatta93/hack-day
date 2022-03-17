@@ -1,0 +1,17 @@
+.header {
+  padding-bottom: 5rem;
+  text-align: center;
+  background-color: rgb(190, 190, 49);
+}
+
+.weather {
+  padding: 3rem 0;
+  text-align: center;
+  background-color: aquamarine;
+}
+
+.gallery {
+  padding: 3rem 0;
+  text-align: center;
+  background-color: rgb(184, 67, 139);
+}
