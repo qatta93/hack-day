@@ -15,7 +15,7 @@ const Holidays = () => {
   const randomIntNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
-  const generateRandomCountry = async () => {
+  const generateRandomCountry = () => {
     if (btnTitle === 'TAKE ME THERE!') {
       setBtnTitle('TRY AGAIN!')
     }
@@ -33,10 +33,12 @@ const Holidays = () => {
         params: {country: country},
     }
     axios.request(options)
-    .then((response) => {console.log(response.data)})
+    .then((response) => {
+      const link = response.data;
+      setGallery(link);
+    })
     .catch((error) => {console.error(error)})
   }
-
 
 // pass the name of country to params of geolocation
 
@@ -73,7 +75,7 @@ const Holidays = () => {
         <p className='header__country'>{country}</p>
       </header>
       <Weather />
-      <Gallery country={country}/>
+      <Gallery gallery={gallery}/>
     </main>
   )
 }

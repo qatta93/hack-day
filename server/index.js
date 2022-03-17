@@ -27,40 +27,34 @@ app.get('/holidays', (req, res) => {
   console.log(countryData)
   res.json(countryData)
   })
-  .catch((error) => {
-    console.error(error)
-  })
+  .catch((error) => console.error(error));
 });
+
+
 
 app.get('/holidays/weather', (req, res) => {
   res.send('holidays/weather is working!!')
 })
+
+
 
 app.get('/holidays/gallery', (req, res) => {
   const country = req.query.country;
   console.log('tutaj holidays gallery', country);
   const getCountryData = {
     method: 'GET',
-    url: `https://api.unsplash.com/search/photos?query=dogs`,
+    url: `https://api.unsplash.com/search/photos?query=${country}}`,
     headers: {
         Authorization: `Client-ID ${process.env.UNSPLASH_KEY}`,
-
     }
   }
-
   axios.request(getCountryData)
   .then((response) => {
-  //   console.log(response.data);
-  // const countryData = response.data[0]
-  // // const json = response;
-  // // const data = json.results.map(obj => obj.urls.small);
-  // console.log(countryData)
-  console.log('tutaj gallery response', response.data.results[0].urls.small)
-  res.json(response)
+  const pictureUrl = response.data.results[0].urls.regular
+  console.log('tutaj gallery response', response.data.results[0].urls.regular)
+  res.json(pictureUrl);
   })
-  .catch((error) => {
-    console.error(error)
-  })
+  .catch((error) => console.error(error));
 })
 
 
