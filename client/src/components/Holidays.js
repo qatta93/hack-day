@@ -9,6 +9,7 @@ const countryList = require('country-list');
 const Holidays = () => {
   // Get random country after clicking
   const [country, setCountry] = useState('');
+  const [gallery, setGallery] = useState([]);
   const [btnTitle, setBtnTitle] = useState('TAKE ME THERE!');
 
   const randomIntNumber = (min, max) => {
@@ -18,25 +19,23 @@ const Holidays = () => {
     if (btnTitle === 'TAKE ME THERE!') {
       setBtnTitle('TRY AGAIN!')
     }
-
-
     const randomInt = randomIntNumber(1, 150)
     const randomCountry = countryList.getData()[randomInt].name;
     setCountry(randomCountry);
   }
 
   // pass the name of country to swapiAPI
-  // const getGallery = () => {
-  //   console.log('getGallery fetch called!')
-  //   const options = {
-  //       method: 'GET',
-  //       url: 'http://localhost:8080/holidays/gallery',
-  //       params: {country: country},
-  //   }
-  //   axios.request(options)
-  //   .then((response) => {console.log(response.data)})
-  //   .catch((error) => {console.error(error)})
-  // }
+  const getGallery = () => {
+    console.log('getGallery fetch called!')
+    const options = {
+        method: 'GET',
+        url: 'http://localhost:8080/holidays/gallery',
+        params: {country: country},
+    }
+    axios.request(options)
+    .then((response) => {console.log(response.data)})
+    .catch((error) => {console.error(error)})
+  }
 
 
 // pass the name of country to params of geolocation
@@ -55,7 +54,7 @@ const Holidays = () => {
 
   useEffect(() => {
     getCountryData()
-    // getGallery()
+    getGallery()
   }, [generateRandomCountry]);
 
 
