@@ -2,6 +2,8 @@
   display: flex;
   height: 100vh;
   width: 100vw;
+  text-align: center;
+  color: white;
   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('./img/bcg1.jpeg');
   background-size: cover;
 }
@@ -9,9 +11,81 @@
 .welcome {
   padding: 3rem;
   margin: auto auto;
-  background-color: rgba(0, 0, 0, 0.418);
+  background-color: rgba(0, 0, 0, 0.685);
+}
+
+.welcome__title {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: yellow;
+}
+
+.welcome__description {
+  margin-bottom: 1.3rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .welcome__button {
+  padding: 0.4rem;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 0.3rem;
+}
+
+.welcome__button:hover {
+  background-color: rgba(230, 230, 32, 0.904);
+}
+
+@media screen and (min-width: 700px) {
+  .welcome {
+    padding: 4rem 6rem;
+  }
   
+  .welcome__title {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+  
+  .welcome__description {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.7rem;
+  }
+  
+  .welcome__button {
+    padding: 0.7rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .welcome {
+    padding: 7rem 9rem;
+  }
+  
+  .welcome__title {
+    margin-bottom: 3rem;
+    font-size: 5rem;
+  }
+  
+  .welcome__description {
+    margin-bottom: 4rem;
+  }
+  
+  h2 {
+    font-size: 3rem;
+  }
+  
+  .welcome__button {
+    padding: 1.4rem;
+    font-size: 2rem;
+  }
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Weather = () => {
+const Weather = ({ weather }) => {
   return (
     <section className='weather'>
-      <p>temperature:</p>
-      <p>humidity:</p>
-      <p>clouds:</p>
+      <h2>Current Weather:</h2>
+      <p>min.Temp: {weather.minTemp}</p>
+      <p>max.Temp: {weather.maxTemp}</p>
+      <p>humidity: {weather.humidity}</p>
+      <p>sky: {weather.sky}</p>
   </section>
   )
 }

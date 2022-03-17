@@ -7,15 +7,18 @@ import './Holidays.css';
 const countryList = require('country-list');
 
 const Holidays = () => {
-  // Get random country after clicking
   const [country, setCountry] = useState('');
   const [gallery, setGallery] = useState([]);
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  const [weather, setWeather] = useState({});
   const [btnTitle, setBtnTitle] = useState('TAKE ME THERE!');
 
   const randomIntNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
-  const generateRandomCountry = () => {
+  const generateRandomCountry = (e) => {
+    e.preventDefault()
     if (btnTitle === 'TAKE ME THERE!') {
       setBtnTitle('TRY AGAIN!')
     }
@@ -26,7 +29,6 @@ const Holidays = () => {
 
   // pass the name of country to swapiAPI
   const getGallery = () => {
-    console.log('getGallery fetch called!')
     const options = {
         method: 'GET',
         url: 'http://localhost:8080/holidays/gallery',
@@ -43,28 +45,46 @@ const Holidays = () => {
 // pass the name of country to params of geolocation
 
   const getCountryData = () => {
-    console.log('getCountryData fetch called!')
     const options = {
         method: 'GET',
         url: 'http://localhost:8080/holidays',
         params: {country: country},
     }
     axios.request(options)
-    .then((response) => {console.log(response.data)})
+    .then((response) => {
+      const {lon} = response.data
+      const {lat} = response.data
+      setLongitude(lon);
+      setLatitude(lat);
+    }
+      )
+    .catch((error) => {console.error(error)})
+  }
+
+  const getCountryWeather = () => {
+    const options = {
+        method: 'GET',
+        url: 'http://localhost:8080/holidays/weather',
+        params: {lon: longitude, lat: latitude},
+    }
+    axios.request(options)
+    .then((response) => {
+      const countryWeather = {
+        maxTemp: parseInt(response.data.main.temp_max - 273.15),
+        minTemp: parseInt(response.data.main.temp_min -273.15),
+        humidity: response.data.main.humidity,
+        sky: response.data.weather[0].main,
+      }
+      setWeather(countryWeather);
+    })
     .catch((error) => {console.error(error)})
   }
 
   useEffect(() => {
     getCountryData()
     getGallery()
+    getCountryWeather()
   }, [generateRandomCountry]);
-
-
-
-
-  // read lat and lon and pass it to weather app
-
-
 
   return (
     <main className='holidays'>
@@ -74,7 +94,7 @@ const Holidays = () => {
         <h2 className='header__destination'>Your holidays destination is..</h2>
         <p className='header__country'>{country}</p>
       </header>
-      <Weather />
+      <Weather weather={weather}/>
       <Gallery gallery={gallery}/>
     </main>
   )
