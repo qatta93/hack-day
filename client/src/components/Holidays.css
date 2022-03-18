@@ -3,7 +3,7 @@ main {
 }
 
 .header {
-  padding: 2rem;
+  padding: 2rem 0;
   padding-bottom: 0.5rem;
   text-align: center;
   background-color: rgba(240, 248, 255, 0.781);
@@ -74,7 +74,6 @@ main {
 
 @media screen and (min-width: 700px) {
   .header {
-    padding: 3.5rem;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.199) 0%, rgba(252, 252, 252, 0.8) 27%, rgba(252, 252, 252, 0.8) 80%, rgba(255, 255, 255, 0.178) 100%);
     ;
   }
@@ -118,7 +117,7 @@ main {
   .header__button,
   .header__button--fav {
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 1rem 1rem;
     font-size: 2.5rem; 
   }
   
