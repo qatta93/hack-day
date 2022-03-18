@@ -19,6 +19,15 @@ const Holidays = () => {
   const [favList, setFavList] = useState([]);
   const [btnTitle, setBtnTitle] = useState('TAKE ME THERE !');
 
+  useEffect(() => {
+    const favorites = localStorage.getItem('favList')||'[]'
+    setFavList(JSON.parse(favorites))
+  },[])
+  
+  useEffect(()=> {
+    localStorage.setItem('favList',JSON.stringify(favList))
+  },[favList])
+
   const randomIntNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }

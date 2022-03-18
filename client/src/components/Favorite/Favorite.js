@@ -7,7 +7,6 @@ const resetFavList = () => {
   setFavList([]);
 }
 
-  console.log(favList);
   return (
       <section className='favorite'>
         <div className='favorite__wrapper'>
