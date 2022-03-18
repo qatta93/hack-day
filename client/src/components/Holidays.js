@@ -102,6 +102,7 @@ const Holidays = () => {
     if (favList.some(fav => fav === country)){
       return favList;
     }
+    favList.splice(4);
     return setFavList([...favList, country])
   }
 
