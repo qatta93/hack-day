@@ -6,6 +6,7 @@ import App from './App';
 import Holidays from './components/index'
 import Weather from './components/Weather/index'
 import Gallery from './components/Gallery/index';
+import Favorite from './components/Favorite/index';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,7 +15,8 @@ ReactDOM.render(
       <Route path="/" element={<App />} />
       <Route path="holidays" element={<Holidays />} >
         <Route path="/holidays/weather" element={<Weather />} />
-        <Route path="/holidays/gallery" element={<Gallery/>} />
+        <Route path="/holidays/gallery" element={<Gallery />} />
+        <Route path="/holidays/favorite" element={<Favorite />} />
       </Route>
     </Routes>
   </BrowserRouter>,

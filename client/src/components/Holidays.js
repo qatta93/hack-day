@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import Gallery from './Gallery/index'
 import Weather from './Weather/index'
 import './Holidays.css';
 import heart from '../img/heart.png'
+import Favorite from './Favorite';
 const countryList = require('country-list');
 
 const Holidays = () => {
@@ -13,6 +15,8 @@ const Holidays = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [weather, setWeather] = useState({});
+  const [showFavorite, setShowFavorite] = useState(false);
+  const [favList, setFavList] = useState([]);
   const [btnTitle, setBtnTitle] = useState('TAKE ME THERE !');
 
   const randomIntNumber = (min, max) => {
@@ -78,7 +82,19 @@ const Holidays = () => {
     .catch((error) => {console.error(error)})
   }
 
+  const showFav = () => {
+    if(showFavorite === false) {
+      return setShowFavorite(true)
+    }
+    return setShowFavorite(false)
+  }
 
+  const favoriteList = () => {
+    if (favList.some(fav => fav === country)){
+      return favList;
+    }
+    return setFavList([...favList, country])
+  }
 
   useEffect(() => {
     getCountryData()
@@ -91,14 +107,16 @@ const Holidays = () => {
       <header className='header'>
         {country === '' ? <h1 className='header__title'>Are you ready?</h1> : null}
         {country !== '' ? 
-          <>
-          <img className='header__heart' src={heart} alt='heart' title='add me to FAV!'/>
+          <> 
+          <img className='header__heart' src={heart} alt='heart' title='add me to FAV!' onClick={favoriteList}/>
           <h2 className='header__destination'>Your holidays destination is:</h2>
           <p className='header__country'>{country}</p>
           <Weather weather={weather}/>
           </>
         : null}
-        <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
+          <button className='header__button' onClick={generateRandomCountry}>{btnTitle}</button>
+          {country !== '' ? <Link to="favorite"><button className='header__button--fav' onClick={showFav}>SEE FAVORITES</button></Link>: null}
+          {showFavorite === true? <Favorite favList={favList} setFavList={setFavList}/> : null}
       </header>
       <Gallery gallery={gallery} country={country} setGallery={setGallery}/>
     </main>
