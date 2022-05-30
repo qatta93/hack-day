@@ -4,8 +4,12 @@
   "description": "Full stack project that was created in 1 day. It generates random holidays destination for an undecided ones. It also shows current weather and pictures of the place.",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf build && cd ./client && npm run build --prod && cp -r build ../"
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon server/index.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\""
   },
   "repository": {
     "type": "git",
