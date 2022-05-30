@@ -1,10 +1,17 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(express.static('build'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const PORT = process.env.PORT || 8080;
 
 app.get('/holidays', (req, res) => {
   const country = req.query.country;
@@ -64,4 +71,4 @@ app.get('/holidays/gallery', (req, res) => {
   .catch((error) => console.error(error));
 })
 
-app.listen(8080, () => console.log('server is running on port 8080'));
+app.listen(PORT, () => console.log('server is running on port 8080'));
